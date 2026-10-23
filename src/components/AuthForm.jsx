@@ -30,48 +30,30 @@ export default function AuthForm() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100 p-4">
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-sm space-y-4 rounded-lg bg-white p-6 shadow"
-      >
-        <h1 className="text-xl font-bold">
-          {mode === 'login' ? 'Iniciar sesión' : 'Crear cuenta'}
-        </h1>
+      <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-4 rounded-lg bg-white p-6 shadow">
+        <h1 className="text-xl font-bold">{mode === 'login' ? 'Iniciar sesión' : 'Crear cuenta'}</h1>
 
         {error && <p className="rounded bg-red-100 p-2 text-sm text-red-700">{error}</p>}
 
-        <input
-          type="email"
-          required
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full rounded border p-2"
-        />
-        <input
-          type="password"
-          required
-          minLength={mode === 'register' ? 8 : undefined}
+        <input type="email" required placeholder="Email"
+          value={email} onChange={(e) => setEmail(e.target.value)}
+          className="w-full rounded border p-2"/>
+        <input type="password" required minLength={mode === 'register' ? 8 : undefined}
           placeholder={mode === 'register' ? 'Contraseña (mín. 8)' : 'Contraseña'}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full rounded border p-2"
-        />
+          value={password} onChange={(e) => setPassword(e.target.value)}
+          className="w-full rounded border p-2"/>
 
-        <button
-          disabled={busy}
-          className="w-full rounded bg-blue-600 p-2 text-white hover:bg-blue-700 disabled:opacity-50"
-        >
+        <button disabled={busy} className="w-full rounded bg-blue-600 p-2 text-white hover:bg-blue-700 disabled:opacity-50 cursor-pointer">
           {busy ? 'Enviando...' : mode === 'login' ? 'Entrar' : 'Registrarme'}
         </button>
 
-        <button
-          type="button"
-          onClick={toggleMode}
-          className="w-full text-sm text-blue-600 hover:underline"
-        >
+        <button type="button" onClick={toggleMode}
+          className="w-full text-sm text-blue-600 hover:underline cursor-pointer">
           {mode === 'login' ? '¿No tienes cuenta? Regístrate' : '¿Ya tienes cuenta? Inicia sesión'}
         </button>
+        <div>
+          <p className="text-center font-semibold text-sms text-gray-500">Email Prueba: demo@example.com | Contraseña: Demo12345</p>
+        </div>
       </form>
     </div>
   );
